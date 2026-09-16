@@ -1,0 +1,159 @@
+/* ==========================================================================
+   Responsive Design & Mobile Optimization
+   Complete adaptability for smartphones, tablets, laptops, and ultra-wide displays
+   ========================================================================== */
+
+/* Tablets & Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+  .gif-editor-workspace {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .video-preview-card {
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+  }
+}
+
+/* Mobile Devices & Phablets (<= 768px) */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 12px 14px 60px;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px;
+    border-radius: var(--radius-lg);
+    margin-bottom: 20px;
+  }
+
+  .header-actions {
+    justify-content: flex-end;
+  }
+
+  .nav-tabs-wrapper {
+    margin-bottom: 24px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+    justify-content: flex-start;
+  }
+
+  .nav-tabs {
+    width: max-content;
+  }
+
+  .tab-btn {
+    padding: 10px 16px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  /* Stack video preview on mobile */
+  .video-preview-card {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .video-meta-title {
+    font-size: 1.1rem;
+  }
+
+  .streams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* URL input bar on mobile */
+  .url-search-box {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .url-input {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 8px 4px;
+  }
+
+  .paste-btn {
+    justify-content: center;
+  }
+
+  .btn-fetch-yt {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* MP4 to GIF Mobile editor */
+  .dropzone {
+    padding: 32px 16px;
+  }
+
+  .timeline-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .gif-result-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Mobile Toasts */
+  .toast-container {
+    left: 12px;
+    right: 12px;
+    bottom: 16px;
+  }
+
+  body.dir-ltr .toast-container {
+    left: 12px;
+    right: 12px;
+  }
+
+  .toast-card {
+    min-width: unset;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Modal on mobile */
+  .modal-box {
+    padding: 20px;
+    margin: 10px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Larger touch targets for mobile accessibility */
+  .btn, .tab-btn, .subtab-btn, .segmented-btn {
+    min-height: 44px;
+  }
+
+  .slider-round {
+    width: 50px;
+  }
+}
+
+/* Extra Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .brand-title {
+    font-size: 1.25rem;
+  }
+
+  .brand-logo-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .btn-lg {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#8b5cf6">
+  <meta name="description" content="Vortex Studio - Next-Gen 4K YouTube Downloader & Neural MP4 to GIF Converter with Lively Working live preview">
+  <title>Vortex Studio | 4K YouTube Downloader &amp; AI GIF Engine</title>
+
+  <!-- PWA Manifest & Favicon -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.svg">
+
+  <!-- YouTube IFrame API for Exact Video Duration & Native Playback -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- Modern Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/glassmorphism.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="dir-ltr">
+  <!-- Ambient Neon Glowing Background Orbs -->
+  <div class="ambient-glow-orb orb-1"></div>
+  <div class="ambient-glow-orb orb-2"></div>
+
+  <!-- Main Application Shell -->
+  <div class="app-container">
+
+    <!-- Header & Brand Navigation -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <div class="brand-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title neon-gradient-text">VORTEX STUDIO</h1>
+          <div class="brand-subtitle">Cyber Media Suite • 4K Downloader &amp; Neural GIF Engine</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- History Modal Trigger -->
+        <button id="btn-open-history" class="btn btn-secondary btn-sm" title="View Download History">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>History</span>
+        </button>
+
+        <!-- Settings Modal Trigger -->
+        <button id="btn-open-settings" class="btn btn-secondary btn-icon" title="Preferences">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="nav-tabs-wrapper" aria-label="Tool selection">
+      <div class="nav-tabs">
+        <button class="tab-btn active" data-tab="pane-youtube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+          </svg>
+          <span>YouTube Downloader</span>
+        </button>
+
+        <button class="tab-btn" data-tab="pane-gif">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+            <line x1="7" y1="2" x2="7" y2="22"></line>
+            <line x1="17" y1="2" x2="17" y2="22"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <line x1="2" y1="7" x2="7" y2="7"></line>
+            <line x1="2" y1="17" x2="7" y2="17"></line>
+            <line x1="17" y1="17" x2="22" y2="17"></line>
+            <line x1="17" y1="7" x2="22" y2="7"></line>
+          </svg>
+          <span>MP4 to GIF Converter</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ====================================================================
+         TOOL 1: YOUTUBE VIDEO & AUDIO DOWNLOADER
+         ==================================================================== -->
+    <main id="pane-youtube" class="tool-pane active">
+      <div class="glass-panel" style="padding: 32px 28px;">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 28px;">
+          <span class="neon-badge neon-badge-uhd" style="margin-bottom: 10px;">
+            <span class="pulse-dot pulse-dot-cyan"></span>
+            <span>Supports 8K / 4K / 1080p / High-Fidelity MP3</span>
+          </span>
+          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">Download YouTube Video &amp; Audio by URL</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Paste any YouTube video or Shorts link to extract verified playable streams directly into your device.</p>
+        </div>
+
+        <!-- URL Search Input Bar -->
+        <div class="url-search-box">
+          <div class="url-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+            </svg>
+          </div>
+          <input type="text" id="yt-url-input" class="url-input" placeholder="Paste YouTube video or Shorts link here..." autocomplete="off">
+          
+          <button id="btn-paste-url" class="paste-btn" title="Paste from clipboard">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Paste</span>
+          </button>
+
+          <button id="btn-fetch-yt" class="btn btn-primary btn-fetch-yt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>Extract Qualities</span>
+          </button>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 12px; margin-top: 14px;">
+          <button id="btn-sample-yt" class="btn btn-secondary btn-sm" style="font-size: 0.82rem;">
+            <span>⚡ Test with Anime Red Eye Sample</span>
+          </button>
+        </div>
+
+        <!-- Video Metadata & Interactive Player Card -->
+        <div id="yt-preview-container" style="display: none;">
+          <div class="video-preview-card">
+            <!-- Native YouTube Embed Player (Plays Actual Video & Reads Exact Duration) -->
+            <div class="video-thumb-container">
+              <div id="yt-player-container" style="width: 100%; height: 100%;"></div>
+              <img id="yt-thumb-img" class="video-thumb-img" src="" alt="Video thumbnail" style="display: block;">
+              <button id="btn-play-yt-embed" class="play-embed-overlay" title="Play Video">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
+              <div id="yt-duration-badge" class="video-duration-badge">00:00</div>
+            </div>
+
+            <!-- Meta details -->
+            <div class="video-meta-details">
+              <div>
+                <h3 id="yt-meta-title" class="video-meta-title">Video title loading...</h3>
+                <div class="video-meta-stats">
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span id="yt-meta-author">Channel</span>
+                  </div>
+                  <div class="meta-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    <span id="yt-meta-views">Views</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AI Advisor Box -->
+              <div class="ai-advisor-card">
+                <div class="ai-advisor-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                </div>
+                <div class="ai-advisor-text">
+                  <h4>Vortex AI Quality &amp; Storage Optimizer</h4>
+                  <p id="ai-advisor-desc">Analyzing video streams to match highest clarity with optimal storage footprint...</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Formats Sub-navigation (Video and Audio ONLY) -->
+          <div class="formats-subtabs">
+            <button class="subtab-btn active" data-subtab="video">Video (MP4 / WebM)</button>
+            <button class="subtab-btn" data-subtab="audio">Pure Audio (MP3 / M4A)</button>
+          </div>
+
+          <!-- Quality Matrix Grid -->
+          <div id="yt-streams-grid" class="streams-grid"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ====================================================================
+         TOOL 2: MP4 TO GIF CONVERTER WITH LIVELY WORKING
+         ==================================================================== -->
+    <main id="pane-gif" class="tool-pane">
+      <div class="glass-panel" style="padding: 32px 28px;">
+        <div style="text-align: center; max-width: 680px; margin: 0 auto 28px;">
+          <span class="neon-badge neon-badge-ai" style="margin-bottom: 10px;">
+            <span class="pulse-dot"></span>
+            <span>Local In-Browser Processing &bull; Lively Working Live Preview</span>
+          </span>
+          <h2 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 8px;">High-Fidelity MP4 to GIF Converter</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Full control over FPS, quality scaling, timeline trimming, AI sharpening filters, and real-time live preview before saving to your device.</p>
+        </div>
+
+        <!-- Video Upload Dropzone -->
+        <div id="gif-dropzone" class="dropzone">
+          <input type="file" id="gif-file-input" class="file-input-hidden" accept="video/mp4,video/webm,video/quicktime,video/x-msvideo">
+          <div class="dropzone-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+          </div>
+          <h3 class="dropzone-title">Drag &amp; drop video file here or click to browse</h3>
+          <p class="dropzone-desc">Supports MP4, WebM, MOV with zero server upload (100% Private, Instant, and Secure)</p>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="event.stopPropagation(); document.getElementById('gif-file-input').click();">
+            <span>Browse Files</span>
+          </button>
+        </div>
+
+        <!-- Quick 1-Click Sample Generator -->
+        <div style="text-align: center; margin-top: 14px;">
+          <button id="btn-sample-video" class="btn btn-secondary btn-sm" style="font-size: 0.82rem;">
+            <span>⚡ Generate Neon Test Video (1-Click Test)</span>
+          </button>
+        </div>
+
+        <!-- GIF Editor & Parameters Workspace -->
+        <div id="gif-editor-workspace" class="gif-editor-workspace" style="display: none;">
+          <!-- Left Column: Video Preview & Scrubber -->
+          <div class="video-player-container">
+            <video id="preview-video" class="preview-video-element" controls playsinline></video>
+
+            <!-- Timeline Scrubber -->
+            <div class="timeline-scrubber-box">
+              <div class="timeline-header">
+                <span>Timeline Scrubber</span>
+                <span id="video-time-display">0.0s</span>
+              </div>
+              <input type="range" id="timeline-slider" class="range-slider" min="0" max="10" step="0.1" value="0">
+              
+              <!-- Trim Controls -->
+              <div class="timeline-inputs">
+                <div class="control-group">
+                  <label class="control-label">Trim Start (seconds):</label>
+                  <input type="number" id="trim-start-time" class="number-input" min="0" step="0.1" value="0">
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Trim End (seconds):</label>
+                  <input type="number" id="trim-end-time" class="number-input" min="0.1" step="0.1" value="3.5">
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Auto-Tune Presets (Strict Size Limiter) -->
+            <div class="glass-card-sm">
+              <div style="font-size: 0.85rem; font-weight: 700; color: #f5d0fe; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                </svg>
+                <span>AI Size Optimizer (Prevents Oversized GIFs):</span>
+              </div>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary btn-sm btn-autotune" data-preset="discord">Discord (&lt; 8MB)</button>
+                <button type="button" class="btn btn-secondary btn-sm btn-autotune" data-preset="whatsapp">WhatsApp (&lt; 5MB)</button>
+                <button type="button" class="btn btn-secondary btn-sm btn-autotune" data-preset="telegram">Telegram (&lt; 10MB)</button>
+                <button type="button" class="btn btn-secondary btn-sm btn-autotune" data-preset="ultracrisp">Ultra Crisp HD</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Settings & Configuration -->
+          <div class="gif-settings-panel">
+            <!-- FPS Selector -->
+            <div class="glass-card-sm">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <label class="control-label">Frame Rate (FPS):</label>
+                <span id="fps-val-label" style="font-weight: 800; color: var(--purple-300);">15 FPS</span>
+              </div>
+              <div class="segmented-control" style="margin-bottom: 10px;">
+                <button type="button" class="segmented-btn" data-fps="10">10</button>
+                <button type="button" class="segmented-btn" data-fps="12">12</button>
+                <button type="button" class="segmented-btn active" data-fps="15">15</button>
+                <button type="button" class="segmented-btn" data-fps="18">18</button>
+                <button type="button" class="segmented-btn" data-fps="20">20</button>
+                <button type="button" class="segmented-btn" data-fps="24">24</button>
+              </div>
+              <input type="range" id="fps-slider" class="range-slider" min="5" max="24" step="1" value="15">
+            </div>
+
+            <!-- Quality & Scale Selector -->
+            <div class="glass-card-sm">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <label class="control-label">Output Scale &amp; Quality:</label>
+                <span id="scale-val-label" style="font-weight: 800; color: var(--purple-300);">50%</span>
+              </div>
+              <input type="range" id="scale-slider" class="range-slider" min="0.25" max="1.0" step="0.05" value="0.5">
+            </div>
+
+            <!-- Speed & Loop Multiplier -->
+            <div class="glass-card-sm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="control-group">
+                <label class="control-label">Playback Speed:</label>
+                <select id="gif-speed-select" class="select-custom">
+                  <option value="0.5">0.5x (Slow)</option>
+                  <option value="0.75">0.75x</option>
+                  <option value="1.0" selected>1.0x (Normal)</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.5">1.5x (Fast)</option>
+                  <option value="2.0">2.0x (Double)</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Loop Mode:</label>
+                <select id="gif-loop-select" class="select-custom">
+                  <option value="0" selected>Infinite Loop</option>
+                  <option value="-1">Boomerang (Forward &amp; Reverse)</option>
+                  <option value="1">Play Once</option>
+                  <option value="3">Loop 3 Times</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- AI Filters & Toggles -->
+            <div class="switch-toggle-wrapper">
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-weight: 700; font-size: 0.9rem;">AI Unsharp Mask (AI Sharpen)</span>
+                <span style="font-size: 0.78rem; color: var(--text-dim);">Eliminates blurriness while preserving small file size</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="gif-ai-sharpen" checked>
+                <span class="slider-round"></span>
+              </label>
+            </div>
+
+            <div class="switch-toggle-wrapper">
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-weight: 700; font-size: 0.9rem;">AI Dynamic Contrast &amp; Vibrance</span>
+                <span style="font-size: 0.78rem; color: var(--text-dim);">Vivid colors and deep blacks</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="gif-ai-contrast" checked>
+                <span class="slider-round"></span>
+              </label>
+            </div>
+
+            <div class="switch-toggle-wrapper">
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-weight: 700; font-size: 0.9rem;">Floyd-Steinberg Dithering</span>
+                <span style="font-size: 0.78rem; color: var(--text-dim);">Smooth gradients and zero color banding</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="gif-dither-toggle" checked>
+                <span class="slider-round"></span>
+              </label>
+            </div>
+
+            <!-- Watermark Text Overlay -->
+            <div class="glass-card-sm" style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px;">
+              <div class="control-group">
+                <label class="control-label">Text Overlay / Watermark (Optional):</label>
+                <input type="text" id="gif-watermark-text" class="text-input" placeholder="Enter text to overlay on GIF...">
+              </div>
+              <div class="control-group">
+                <label class="control-label">Position:</label>
+                <select id="gif-watermark-pos" class="select-custom">
+                  <option value="bottom" selected>Bottom</option>
+                  <option value="middle">Center</option>
+                  <option value="top">Top</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Size Estimate & Start Button (Triggers Lively Working Studio!) -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+              <span id="est-file-size" style="font-size: 0.88rem; font-weight: 700; color: var(--purple-300);">Estimated Size: ~2.4 MB (AI Safe Guard)</span>
+              <button id="btn-start-convert" class="btn btn-neon btn-lg glow-border">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                <span>⚡ Generate (Lively Working)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ====================================================================
+       MODAL: LIVELY WORKING STUDIO (Requested Interactive Live Rendering)
+       ==================================================================== -->
+  <div id="lively-working-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 780px; text-align: center;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="pulse-dot"></span>
+          <h3 id="lively-title" class="modal-title" style="font-size: 1.3rem;">⚡ LIVELY WORKING STUDIO</h3>
+        </div>
+        <button id="btn-close-lively" class="modal-close-btn" title="Close">&times;</button>
+      </div>
+
+      <!-- Stage 1: Active Live Rendering Screen -->
+      <div id="lively-stage-render">
+        <div style="margin-bottom: 14px; color: var(--text-muted); font-size: 0.92rem;">
+          <span id="lively-status-text">Rendering frames live with AI filters...</span>
+        </div>
+
+        <!-- Live Canvas Preview Screen (Active DOM rendering prevents black frames!) -->
+        <div style="position: relative; max-width: 600px; margin: 0 auto 18px; border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--purple-500); box-shadow: var(--glow-md); background: #000; aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center;">
+          <canvas id="lively-canvas" style="max-width: 100%; max-height: 100%; object-fit: contain;"></canvas>
+          <div id="lively-hud-badge" style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.75); padding: 4px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; color: #a855f7; border: 1px solid rgba(168,85,247,0.3);">
+            LIVE FRAME: <span id="lively-frame-num">0</span>
+          </div>
+        </div>
+
+        <!-- Live Progress Track -->
+        <div class="progress-track" style="margin-bottom: 12px;">
+          <div id="lively-progress-fill" class="progress-fill" style="width: 0%;"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 18px;">
+          <span id="lively-percent-text">0% Complete</span>
+          <span>AI Unsharp Mask &bull; NeuQuant Palette</span>
+        </div>
+
+        <button id="btn-cancel-lively" class="btn btn-secondary btn-sm" style="color: #ef4444; border-color: rgba(239,68,68,0.4);">
+          <span>Cancel Process</span>
+        </button>
+      </div>
+
+      <!-- Stage 2: Final Result Ready Screen -->
+      <div id="lively-stage-result" style="display: none;">
+        <div style="margin-bottom: 16px;">
+          <span class="neon-badge neon-badge-success">
+            <span class="pulse-dot"></span>
+            <span>GIF Successfully Created &amp; Optimized!</span>
+          </span>
+        </div>
+
+        <!-- Result Preview Image -->
+        <div style="max-width: 540px; margin: 0 auto 20px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-glass-bright); box-shadow: var(--glow-md); background: #000;">
+          <img id="lively-result-img" src="" alt="Animated GIF Result" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <!-- Statistics Chips (Probed directly from real generated GIF) -->
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+          <div class="stat-chip"><span style="color: var(--text-dim);">Duration:</span> <strong id="lively-stat-duration" style="color: #c084fc; margin-left: 4px;">0.0s</strong></div>
+          <div class="stat-chip"><span style="color: var(--text-dim);">Resolution:</span> <strong id="lively-stat-dimensions" style="color: #c084fc; margin-left: 4px;">0 &times; 0</strong></div>
+          <div class="stat-chip"><span style="color: var(--text-dim);">FPS:</span> <strong id="lively-stat-fps" style="color: #c084fc; margin-left: 4px;">15 FPS</strong></div>
+          <div class="stat-chip"><span style="color: var(--text-dim);">Frames:</span> <strong id="lively-stat-frames" style="color: #c084fc; margin-left: 4px;">0</strong></div>
+          <div class="stat-chip"><span style="color: var(--text-dim);">File Size:</span> <strong id="lively-stat-size" style="color: #4ade80; margin-left: 4px;">0.0 MB</strong></div>
+          <div class="stat-chip"><span style="color: var(--text-dim);">Format:</span> <strong id="lively-stat-format" style="color: #67e8f9; margin-left: 4px;">GIF (2-Pass Palette)</strong></div>
+        </div>
+
+        <!-- Action Buttons: Direct File Explorer on PC, Web Share on Phone -->
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button id="btn-lively-download" class="btn btn-neon btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download to Device (PC / Phone)</span>
+          </button>
+
+          <button id="btn-lively-copy" class="btn btn-secondary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy GIF / Link</span>
+          </button>
+
+          <button id="btn-lively-another" class="btn btn-secondary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span>Create Another GIF</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Error State Screen -->
+      <div id="lively-error-container" style="display: none; padding: 24px; text-align: center;">
+        <div style="color: #ef4444; font-size: 2.5rem; margin-bottom: 12px;">⚠</div>
+        <h4 style="font-size: 1.2rem; font-weight: 800; color: #fca5a5; margin-bottom: 8px;">Processing Error</h4>
+        <p id="lively-error-message" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;"></p>
+        <button id="btn-lively-retry" class="btn btn-primary btn-md">
+          <span>Try Again</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">Preferences</h3>
+        <button id="btn-close-settings" class="modal-close-btn">&times;</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="switch-toggle-wrapper">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-weight: 700;">UI Sound Effects</span>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Acoustic feedback when interacting</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="setting-sound-toggle" checked>
+            <span class="slider-round"></span>
+          </label>
+        </div>
+
+        <div class="switch-toggle-wrapper">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-weight: 700;">GPU Hardware Acceleration</span>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Accelerates Canvas frame rendering</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="setting-hw-toggle" checked>
+            <span class="slider-round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- History Modal -->
+  <div id="history-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Download &amp; Conversion History</h3>
+        <button id="btn-close-history" class="modal-close-btn">&times;</button>
+      </div>
+      <div id="history-items-list" style="max-height: 380px; overflow-y: auto; margin-bottom: 16px;"></div>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button id="btn-clear-history" class="btn btn-secondary btn-sm" style="color: #ef4444;">
+          <span>Clear All History</span>
+        </button>
+        <span style="font-size: 0.82rem; color: var(--text-dim);">Stored locally in your browser</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Bootstrap Module -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

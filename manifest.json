@@ -1,0 +1,22 @@
+{
+  "name": "Vortex Studio - 4K YouTube Downloader & Neural GIF Engine",
+  "short_name": "VortexStudio",
+  "description": "Next-Gen 4K YouTube Downloader and Neural MP4 to GIF Converter with Lively Working live preview",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07050e",
+  "theme_color": "#8b5cf6",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
